@@ -1,0 +1,45 @@
+<html>
+
+<head>
+  <title>gorillanguege</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css?family=Faster+One" rel="stylesheet">
+  <script src="gori.js"></script>
+  <script>
+    let humanlang;
+    let gorillang;
+    window.onload = function(){
+      humanlang = document.getElementById("humanput");
+      gorillang = document.getElementById("gorillaput");
+    }
+    function GorillaClick() {
+      let text = encode(humanlang.value);
+      gorillang.value = text;
+    }
+    function HumanClick() {
+      let text = decode(gorillang.value);
+      humanlang.value = text;
+    }
+
+  </script>
+</head>
+
+<body>
+  <h1>Gorillanguege</h1>
+
+  <p>ヒトとゴリラの通訳だよ。ひらがなしかわからないよ。</p>
+
+  <p class="hito">
+    ヒト： <input type="text" id="humanput">
+  </p>
+  <p class="button">
+    <button type="button" id="encBtn" onclick="GorillaClick()">↓ゴリラ化</button>
+    <button type="button" id="encBtn" onclick="HumanClick()">ヒト化↑</button>
+  </p>
+  <p class="gorilla">
+    ゴリラ：<input type="text" id="gorillaput">
+  </p>
+</body>
+
+</html>
