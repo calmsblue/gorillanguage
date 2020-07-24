@@ -9,17 +9,34 @@
   <script>
     let humanlang;
     let gorillang;
+    let tweetbtn;
     window.onload = function(){
       humanlang = document.getElementById("humanput");
       gorillang = document.getElementById("gorillaput");
+      tweetbtn = document.getElementById("tweetbtn");
     }
     function GorillaClick() {
       let text = encode(humanlang.value);
       gorillang.value = text;
+      setTweetButton(text);
     }
     function HumanClick() {
       let text = decode(gorillang.value);
       humanlang.value = text;
+    }
+    
+    function setTweetButton(text) {
+      document.getElementById("tweet-area").innerHTML = "";
+      twttr.widgets.createShareButton(
+        "",
+        document.getElementById("tweet-area"),
+        {
+          size: "large", 
+          text: text, 
+          hashtags: "gorillanguage", 
+          url: "//url" 
+        }
+      );
     }
 
   </script>
@@ -31,15 +48,17 @@
   <p>ヒトとゴリラの通訳だよ。ひらがなしかわからないよ。</p>
 
   <p class="hito">
-    ヒト： <input type="text" id="humanput" placeholder="ばなな">
+    ヒト： <input type="text" id="humanput">
   </p>
   <p class="button">
     <button type="button" id="encBtn" onclick="GorillaClick()">↓ゴリラ化</button>
     <button type="button" id="encBtn" onclick="HumanClick()">ヒト化↑</button>
   </p>
   <p class="gorilla">
-    ゴリラ：<input type="text" id="gorillaput" placeholder="ウッウッ​ウホホ​ウホホ​">
+    ゴリラ：<input type="text" id="gorillaput">
   </p>
+  <a id="tweet-area"></div> <script src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
 </body>
 
 </html>
